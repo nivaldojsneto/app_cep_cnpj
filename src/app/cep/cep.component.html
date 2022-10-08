@@ -1,0 +1,12 @@
+<div class="flex mt-7">
+  <form #form="ngForm">
+    <p-inputMask type="tel" mask="99999-999" [(ngModel)]="buscacep"
+     placeholder="99-999999" [unmask]="true" (onBlur)="buscaCEP(buscacep, form)" name="cep"></p-inputMask>
+
+     <div>
+      <p-button label="Buscar Cep" (click)="buscaCEP(buscacep, form)"></p-button>
+     </div>
+  </form>
+
+  <input type="text" pInputText ngModel id="logradouro" name="logradouro">
+</div>
