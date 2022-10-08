@@ -1,12 +1,16 @@
-<div class="flex mt-7">
+<div class="grid flex mt-7">
   <form #form="ngForm">
-    <p-inputMask type="tel" mask="99999-999" [(ngModel)]="buscacep"
-     placeholder="99-999999" [unmask]="true" (onBlur)="buscaCEP(buscacep, form)" name="cep"></p-inputMask>
+    <div class="flex col-12 md:col-6 lg:col-2">
+      <p-inputMask styleClass="w-full" type="tel" mask="99999-999" [(ngModel)]="buscacep"
+      placeholder="99-999999" [unmask]="true" (onBlur)="buscaCEP(buscacep, form)" name="cep"></p-inputMask>
+    </div>
 
-     <div>
-      <p-button label="Buscar Cep" (click)="buscaCEP(buscacep, form)"></p-button>
-     </div>
+    <div class="flex col-12 md:col-6 lg:col-2">
+      <p-button class="w-full" label="Buscar Cep" (click)="buscaCEP(buscacep, form)"></p-button>
+    </div>
+
+
+  <input type="text" pInputText ngModel id="logradouro" name="logradouro" disabled="true">
   </form>
 
-  <input type="text" pInputText ngModel id="logradouro" name="logradouro">
 </div>
