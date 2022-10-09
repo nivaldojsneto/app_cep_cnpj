@@ -17,12 +17,12 @@ export class CepComponent implements OnInit {
     private messageService: MessageService
   ) { }
 
-  buscaCEP(buscacep: any, form: any){
+  buscarCEP(buscacep: any, form: any){
     if(buscacep != null && buscacep !== ''){
       this.cepService.consultaCEP(buscacep).subscribe({
         next: (dados) => {
           console.log(dados);
-          // this.buscar = true;
+          this.buscar = true;
           setTimeout(() => {
             this.populaCEPForm(dados, form);
           }, 100);
