@@ -1,5 +1,5 @@
 export class Cep {
-  "cep": string;
+	"cep": string;
 	"state": string;
 	"city": string;
 	"neighborhood": string;

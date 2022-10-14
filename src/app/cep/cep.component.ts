@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
 import { CepService } from './cep.service';
 
@@ -14,21 +15,25 @@ export class CepComponent implements OnInit {
 
   constructor(
     private cepService: CepService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private spinner: NgxSpinnerService
   ) { }
 
   buscarCEP(buscacep: any, form: any){
-    if(buscacep != null && buscacep !== ''){
+    if(buscacep != null && buscacep !== '' && buscacep >= 8){
+      this.spinner.show();
       this.cepService.consultaCEP(buscacep).subscribe({
         next: (dados) => {
-          console.log(dados);
           this.buscar = true;
           setTimeout(() => {
             this.populaCEPForm(dados, form);
           }, 100);
+          this.spinner.hide();
         },
         error: (e) => {
           this.resetaCEPForm(form);
+          this.buscar = false;
+          this.spinner.hide();
           console.log(e);
           this.messageService.add({
             severity: 'error',
@@ -56,6 +61,7 @@ export class CepComponent implements OnInit {
       bairro: null,
       estado: null
     })
+    this.buscar = false;
   }
 
   ngOnInit() {

@@ -3,12 +3,12 @@
   <div class="grid flex justify-content-center flex-wrap ">
     <div class="col-8 md:col-6 lg:col-3">
       <h6>Informe o Cep</h6>
-      <p-inputMask  type="tel" styleClass="w-full" mask="99999-999" (onBlur)="buscarCEP(buscacep, form)" name="cep" [(ngModel)]="buscacep"  [unmask]="true"></p-inputMask>
+      <p-inputMask  type="tel" styleClass="w-full" mask="99999-999" minlength="8" (onBlur)="buscarCEP(buscacep, form)" name="cep" [(ngModel)]="buscacep"  [unmask]="true" [required]="true"></p-inputMask>
     </div>
     <div class="col-4 md:col-6 lg:col-3">
       <h6>&nbsp;</h6>
       <button pButton pRipple type="button" label="Pesquisar" class="p-button-outlined"
-      (click)="buscarCEP(buscacep, form)"></button>
+      (click)="buscarCEP(buscacep, form)" [disabled]="form.invalid"></button>
     </div>
   </div>
 
